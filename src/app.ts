@@ -9,7 +9,6 @@ import 'reflect-metadata';
 
 @injectable()
 export class App {
-
 	app: Express;
 	server: Server;
 	port: number;
@@ -23,19 +22,18 @@ export class App {
 		this.port = 8000;
 	}
 
-	useRoutes() {
+	useRoutes(): void {
 		this.app.use('/users', this.userController.router);
 	}
 
-	useExceptionFilter() {
+	useExceptionFilter(): void {
 		this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
 	}
 
-	public async init() {
+	public async init(): Promise<void> {
 		this.useRoutes();
 		this.useExceptionFilter();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`server is running on port ${this.port}`);
 	}
-
 }

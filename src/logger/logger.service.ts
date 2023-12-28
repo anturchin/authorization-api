@@ -3,10 +3,8 @@ import { ILogger } from './logger.interface';
 import { injectable } from 'inversify';
 import 'reflect-metadata';
 
-
 @injectable()
-export class LoggerService implements ILogger{
-
+export class LoggerService implements ILogger {
 	public logger: Logger;
 
 	constructor() {
@@ -18,17 +16,15 @@ export class LoggerService implements ILogger{
 		});
 	}
 
-	log(...arg: unknown[]) {
+	log(...arg: unknown[]): void {
 		this.logger.info(...arg);
 	}
 
-	error(...arg: unknown[]) {
+	error(...arg: unknown[]): void {
 		this.logger.error(...arg);
 	}
 
-	warn(...arg: unknown[]) {
+	warn(...arg: unknown[]): void {
 		this.logger.warn(...arg);
 	}
-
-
 }

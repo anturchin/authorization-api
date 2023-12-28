@@ -1,7 +1,4 @@
-
-
 export class HTTPError extends Error {
-
 	statusCode: number;
 	context?: string;
 
@@ -11,5 +8,4 @@ export class HTTPError extends Error {
 		this.message = message;
 		this.context = context;
 	}
-
 }
