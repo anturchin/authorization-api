@@ -1,1 +1,1 @@
-# api-dashboard
+# authorization-api
