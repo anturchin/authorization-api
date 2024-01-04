@@ -1,6 +1,6 @@
+import 'reflect-metadata';
 import express, { Express } from 'express';
 import { json } from 'body-parser';
-import 'reflect-metadata';
 import { Server } from 'http';
 import { ILogger } from './logger/logger.interface';
 import { inject, injectable } from 'inversify';
@@ -49,5 +49,9 @@ export class App {
 		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`server is running on port ${this.port}`);
+	}
+
+	public close(): void {
+		this.server.close();
 	}
 }
